@@ -1,0 +1,20 @@
+{
+  "name": "charla_banode_poo",
+  "version": "1.0.0",
+  "description": "Este es un workshop para explorar maneras de reducir la utilización de if/switch en JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "make"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "poo"
+  ],
+  "author": "diego.sanches@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}
