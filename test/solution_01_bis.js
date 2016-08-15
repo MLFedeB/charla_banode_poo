@@ -25,23 +25,6 @@ describe("solution_01", () => {
                 members: [ "Michel", "Bricks"]
             }
         ]);
-        // calendar.addAttendes([{
-        //     name: "Gabriel",
-        //     type: 0
-        // }, {
-        //     name: "Michel",
-        //     type: 0
-        // }, {
-        //     name: "Bricks",
-        //     type: 0
-        // }, {
-        //     name: "projector",
-        //     type: 1
-        // }, {
-        //     name: "Team",
-        //     type: 2,
-        //     members: [ "Michel", "Bricks"]
-        // }]);
     });
 
     describe("person", () => {
@@ -204,5 +187,13 @@ describe("solution_01", () => {
 
         });
 
+    });
+
+    describe("whatever", () => {
+        it("should throw error if attende doesn't exist", () => {
+            chai.expect( () => {
+                calendar.isBusy( "Unknown", new Date("2016-08-09T12:00:00.000Z"));
+            }).to.throw(Error);
+        });
     });
 });

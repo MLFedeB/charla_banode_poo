@@ -1,5 +1,16 @@
 const clone = require("clone");
 
+Array.prototype.findIfAbsentError = function( callback, errorClass) {
+    const match = this.find(callback);
+
+    if ( !match ) {
+        console.log(__filename, "Error");
+        throw new errorClass();
+    }
+
+    return match;
+};
+
 function Calendar() {
     this.attendes = [];
 }
@@ -34,7 +45,7 @@ Calendar.prototype.getAttende = function(name) {
 };
 
 Calendar.prototype.isBusy = function(who, when) {
-    const attende = this.attendes.find( (a) => a.name === who);
+    const attende = this.attendes.findIfAbsentError( (a) => a.name === who, Error);
 
     return attende.isBusy(when);
  };
