@@ -10,11 +10,7 @@ Calendar.prototype.addAttendes = function(attendes) {
 };
 
 Calendar.prototype.addEvent = function(event) {
-    const overlaped = this.events.find(
-        (e) =>
-            ( event.to >= e.from && event.to <= e.to ) ||
-            ( event.from >= e.from && event.from <= e.to )
-    );
+    const overlaped = this.events.find( (e) => Calendar.areOverlaped(e, event) );
 
     if ( overlaped ) {
         const resource = event.attendes.find( (a) => this.getResource(a) ),
@@ -63,6 +59,11 @@ Calendar.prototype.isBusy = function(who, when) {
             ( when >= new Date(e.from) && when <= new Date(e.to) )
     );
     return event !== undefined;
- };
+};
+
+Calendar.areOverlaped = function(event0, event1) {
+    return ( event0.from <= event1.from && event1.from <= event0.to ) ||
+        ( event0.from <= event1.to && event1.to <= event0.to );
+};
 
 module.exports = Calendar;

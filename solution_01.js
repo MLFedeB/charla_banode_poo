@@ -4,7 +4,6 @@ Array.prototype.findIfAbsentError = function( callback, errorClass) {
     const match = this.find(callback);
 
     if ( !match ) {
-        console.log(__filename, "Error");
         throw new errorClass();
     }
 
