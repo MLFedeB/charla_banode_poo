@@ -1,9 +1,9 @@
 const chai = require('chai'),
-      Calendar = require("../solution_00_bis");
+      Calendar = require("../solution");
 
 var calendar;
 
-describe("solution_00", () => {
+describe("solution", () => {
     beforeEach(() => {
         calendar = new Calendar();
         calendar.addAttendes([{
@@ -18,15 +18,11 @@ describe("solution_00", () => {
         }, {
             name: "projector",
             type: 1
-        }, {
-            name: "Team",
-            type: 2,
-            members: [ "Michel", "Bricks"]
         }]);
     });
 
     describe("person", () => {
-        it("should be busy during an event", () => {
+        it.skip("should be busy during an event", () => {
             calendar.addEvent({
                 name: "Meetup",
                 from: new Date("2016-08-09T12:00:00.000Z"),
@@ -39,7 +35,7 @@ describe("solution_00", () => {
             ).to.be.true;
         });
 
-        it("shouldn't be busy after an event", () => {
+        it.skip("shouldn't be busy after an event", () => {
             calendar.addEvent({
                 name: "Meetup",
                 from: new Date("2016-08-09T12:00:00.000Z"),
@@ -52,7 +48,7 @@ describe("solution_00", () => {
             ).to.be.false;
         });
 
-        it("should attend both overlaped events", () => {
+        it.skip("should attend both overlaped events", () => {
             calendar.addEvent({
                 name: "Meetup",
                 from: new Date("2016-08-09T12:00:00.000Z"),
@@ -74,7 +70,7 @@ describe("solution_00", () => {
     });
 
     describe("resource", () => {
-        it("should be busy during an event", () => {
+        it.skip("should be busy during an event", () => {
             calendar.addEvent({
                 name: "Meetup",
                 from: new Date("2016-08-09T12:00:00.000Z"),
@@ -87,7 +83,7 @@ describe("solution_00", () => {
             ).to.be.true;
         });
 
-        it("shouldn't be busy after an event", () => {
+        it.skip("shouldn't be busy after an event", () => {
             calendar.addEvent({
                 name: "Meetup",
                 from: new Date("2016-08-09T12:00:00.000Z"),
@@ -100,7 +96,7 @@ describe("solution_00", () => {
             ).to.be.false;
         });
 
-        it("should trigger an error if resource is added to overlaped events", () => {
+        it.skip("should trigger an error if resource is added to overlaped events", () => {
             calendar.addEvent({
                 name: "Meetup",
                 from: new Date("2016-08-09T12:00:00.000Z"),
@@ -120,50 +116,4 @@ describe("solution_00", () => {
         });
     });
 
-    describe("group", () => {
-        it("should be busy during an event", () => {
-            calendar.addEvent({
-                name: "Meetup",
-                from: new Date("2016-08-09T12:00:00.000Z"),
-                to: new Date("2016-08-09T12:30:00.000Z"),
-                attendes: [ "Team" ]
-            });
-
-            chai.expect(
-                calendar.isBusy( "Team", new Date("2016-08-09T12:00:00.000Z"))
-            ).to.be.true;
-        });
-
-        it("shouldn't be busy after an event", () => {
-            calendar.addEvent({
-                name: "Meetup",
-                from: new Date("2016-08-09T12:00:00.000Z"),
-                to: new Date("2016-08-09T12:30:00.000Z"),
-                attendes: [ "Team" ]
-            });
-
-            chai.expect(
-                calendar.isBusy( "Team", new Date("2016-08-09T12:40:00.000Z"))
-            ).to.be.false;
-        });
-
-        it("shouldn't trigger an error because the aren't overlaped event", () => {
-            calendar.addEvent({
-                name: "CatchUp",
-                from: new Date("2016-08-09T12:00:00.000Z"),
-                to: new Date("2016-08-09T12:30:00.000Z"),
-                attendes: [ "Gabriel" ]
-            });
-
-            chai.expect( () => {
-                calendar.addEvent({
-                    name: "Meetup",
-                    from: new Date("2016-08-09T12:05:00.000Z"),
-                    to: new Date("2016-08-09T12:10:00.000Z"),
-                    attendes: [ "Team" ]
-                });
-            }).to.not.throw(Error);
-
-        });
-    });
 });
