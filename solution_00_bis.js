@@ -62,8 +62,10 @@ Calendar.prototype.isBusy = function(who, when) {
 };
 
 Calendar.areOverlaped = function(event0, event1) {
-    return ( event0.from <= event1.from && event1.from <= event0.to ) ||
-        ( event0.from <= event1.to && event1.to <= event0.to );
+    const events = [ event0, event1 ].sort( (a,b) => a.from - b.from );
+
+    return ( events[0].from <= events[1].from && events[1].from <= events[0].to ) ||
+        ( events[0].from <= events[1].to   && events[1].to   <= events[0].to );
 };
 
 module.exports = Calendar;
