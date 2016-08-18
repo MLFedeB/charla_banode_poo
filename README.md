@@ -7,6 +7,7 @@ Este es un workshop que plantea un ejercicio a modo de [Kata](http://www.codekat
 3. Ventajas y desventajas (alternativas)
 4. Reducir el número de if/switch utilizando POO
 5. Áreas de aplicación
+6. Que significa escribir "buen código"?
 
 Si queres realizar el workshop te proponemos que leas: *La problemática* (se lee rápido), *Paso para realizar el workshop* y *Qué necesito?*.
 
