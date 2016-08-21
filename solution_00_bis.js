@@ -6,7 +6,8 @@ function Calendar() {
 }
 
 Calendar.prototype.addAttendes = function(attendes) {
-    this.attendes = clone(attendes);
+    attendes = attendes.filter( (attende) => !this.attendes.find( (a) => a.name === attende.name ) );
+    Array.prototype.push.apply(this.attendes, clone(attendes));
 };
 
 Calendar.prototype.addEvent = function(event) {
