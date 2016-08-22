@@ -21,5 +21,9 @@ module.exports = {
 
     attendesWichAreMembers: function() {
         return this.attendes.filter( (a) => this.members.indexOf(a.name) !== -1 );
+    },
+
+    isEqual: function(other) {
+        return this.name === other.name;
     }
 };

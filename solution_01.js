@@ -25,7 +25,7 @@ Calendar.prototype.protocol = function(attende) {
 };
 
 Calendar.prototype.addAttendes = function(attendes) {
-    attendes = attendes.filter( (attende) => !this.attendes.find( (a) => a.name === attende.name ) ).map( (a) => {
+    attendes = attendes.filter( (attende) => !this.attendes.find( (a) => a.isEqual(attende) ) ).map( (a) => {
         a.__proto__ = this.protocol(a);
         return a;
     });
@@ -41,11 +41,11 @@ Calendar.prototype.addEvent = function(event) {
 };
 
 Calendar.prototype.getAttende = function(name) {
-    return this.attendes.find( (a) => a.name === name);
+    return this.attendes.find( (a) => a.isEqual({name: name}) );
 };
 
 Calendar.prototype.isBusy = function(who, when) {
-    const attende = this.attendes.findIfAbsentError( (a) => a.name === who, Error);
+    const attende = this.attendes.findIfAbsentError( (a) => a.isEqual({name: who}), Error);
 
     return attende.isBusy(when);
  };

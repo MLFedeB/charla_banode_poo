@@ -11,7 +11,7 @@ module.exports = {
         if ( overlaped ) {
             throw new Error();
         }
-        
+
         this.events.push(event);
     },
 
@@ -21,5 +21,9 @@ module.exports = {
                 e.attendes.indexOf( this.name ) !== -1 &&
                 ( when >= new Date(e.from) && when <= new Date(e.to) )
         );
+    },
+
+    isEqual: function(other) {
+        return this.name === other.name;
     }
 };
