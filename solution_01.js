@@ -25,10 +25,11 @@ Calendar.prototype.protocol = function(attende) {
 };
 
 Calendar.prototype.addAttendes = function(attendes) {
-    this.attendes = attendes.map( (a) => {
+    attendes = attendes.filter( (attende) => !this.attendes.find( (a) => a.name === attende.name ) ).map( (a) => {
         a.__proto__ = this.protocol(a);
         return a;
     });
+    Array.prototype.push.apply(this.attendes, clone(attendes));
 };
 
 Calendar.prototype.addEvent = function(event) {

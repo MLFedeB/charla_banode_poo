@@ -27,6 +27,36 @@ describe("solution_01", () => {
         ]);
     });
 
+    describe("calendar", () => {
+        it("should allow adding attendes in batches", () => {
+            calendar.addAttendes([{
+                name: "Thomas",
+                type: 0
+            }, {
+                name: "laptop",
+                type: 1
+            }]);
+
+            chai.expect(
+                calendar.attendes
+            ).to.have.lengthOf(7);
+        });
+
+        it("should ensure attendes are not added multiple times", () => {
+            calendar.addAttendes([{
+                name: "Gabriel",
+                type: 0
+            }, {
+                name: "projector",
+                type: 1
+            }]);
+
+            chai.expect(
+                calendar.attendes
+            ).to.have.lengthOf(5);
+        });
+    });
+
     describe("person", () => {
         it("should be busy during an event", () => {
             calendar.addEvent({
